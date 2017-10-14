@@ -1,0 +1,9 @@
+.navbar {
+  display: flex;
+  padding: 10px;
+}
+
+.navbar-item {
+  display: flex;
+  padding: 10px;
+}

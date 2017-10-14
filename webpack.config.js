@@ -15,6 +15,7 @@ module.exports = {
   },
   module: {
     loaders: [
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
       {
         test: /jsx?$/,
         include: resolve(__dirname, './app'),
