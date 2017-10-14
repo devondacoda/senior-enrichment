@@ -28,6 +28,7 @@ const Campuses = db.define('campuses', {
 	}
 });
 
+// Students.belongsTo(Campuses, {as: 'campus'});
 Campuses.belongsToMany(Students, {through: 'campus-student'});
 
 module.exports = {Students, Campuses};

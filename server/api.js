@@ -17,6 +17,13 @@ api.get('/campuses', (req, res, next) => {
 	.catch(next);
 });
 
+api.get('/campuses/:campusId', (req, res, next) => {
+	Campuses.findById(Number(req.params.campusId))
+	.then(campus => {
+		res.json(campus);
+	});
+});
+
 api.get('/students', (req, res, next) => {
 	Students.findAll()
 	.then(students => {
