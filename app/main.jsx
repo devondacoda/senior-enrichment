@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Campuses from './components/Campuses';
 import SingleCampus from './components/SingleCampus';
 import Students from './components/Students';
+import SingleStudent from './components/SingleStudent';
 
 render(
   <Router>
@@ -19,6 +20,7 @@ render(
       <div>
         <Route exact path="/" component={Campuses} />
         <Route exact path="/students" component={Students} />
+        <Route path="/students/:studentId" component={SingleStudent} />
         <Route path="/campuses/:campusId" component={SingleCampus} />
       </div>
     </div>

@@ -18,10 +18,18 @@ api.get('/campuses', (req, res, next) => {
 });
 
 api.get('/campuses/:campusId', (req, res, next) => {
-	Campuses.findById(Number(req.params.campusId))
-	.then(campus => {
-		res.json(campus);
+	const selectedCampus = Campuses.findById(Number(req.params.campusId));
+	const campusStudents = selectedCampus.then(campus => {
+		return Students.findAll({
+			where: {
+				campusId: campus.id
+			}
+		});
 	});
+
+	Promise.all([selectedCampus, campusStudents])
+	.then((arrOfResults) => res.json(arrOfResults))
+	.catch(next);
 });
 
 api.get('/students', (req, res, next) => {
@@ -29,6 +37,14 @@ api.get('/students', (req, res, next) => {
 	.then(students => {
 		res.json(students);
 	})
+	.catch(next);
+});
+
+api.get('/students/:studentId', (req, res, next) => {
+	Students.findById(Number(req.params.studentId), {
+		include: [{all: true}]
+	})
+	.then(student => res.json(student))
 	.catch(next);
 });
 

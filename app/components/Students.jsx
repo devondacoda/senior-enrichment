@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 export default class Students extends Component {
@@ -24,7 +25,9 @@ export default class Students extends Component {
           students.map(student => {
             return (
               <div key={student.id}>
-                <h3>{student.name}</h3>
+                <Link to={`/students/${student.id}`}>
+                  <h3>{student.name}</h3>
+                </Link>
               </div>
             );
           })
