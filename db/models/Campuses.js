@@ -8,7 +8,7 @@ const Campuses = db.define('campuses', {
 	},
 	image: {
 		type: Sequelize.STRING,
-		defaultValue: 'http://www.eua.be/Libraries/euima-full-costing/PIC-2-Front-of-College_-_TCD.jpg?sfvrsn=0'
+		defaultValue: 'https://thetomatos.com/wp-content/uploads/2017/04/free-school-building-clipart.png'
 	}
 });
 

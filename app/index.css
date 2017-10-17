@@ -1,9 +1,50 @@
+body {
+  margin: 0;
+}
+
+#content {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
 .navbar {
   display: flex;
-  padding: 10px;
+  flex-direction: row;
+  background: #311515;
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  justify-content: center;
+}
+
+#navbar-links {
+  display: flex;
 }
 
 .navbar-item {
+  padding-left: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar-item:hover {
+  padding-left: 10px;
+  color: #3d7267;
+  text-decoration: none;
+}
+
+img {
+  width: 30vw;
+  height: 30vh;
+}
+
+#campuses {
   display: flex;
-  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#campus {
+  margin: 5px;
 }

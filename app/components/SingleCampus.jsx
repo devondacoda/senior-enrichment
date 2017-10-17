@@ -26,7 +26,6 @@ export default class SingleCampus extends Component {
 
   render() {
     const students = this.state.students;
-    console.log(students);
     return (
       <div>
         <h1>Campus: {this.state.campus.name}</h1>

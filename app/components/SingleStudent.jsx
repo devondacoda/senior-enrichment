@@ -30,14 +30,21 @@ export default class SingleStudent extends Component {
 
   render() {
     const student = this.state.student;
+    console.log(student);
     return (
       <div>
         <h2>{student.name.toUpperCase()}</h2>
-        {student.email ? <h2>Email: {student.email}</h2> : <div />}
-        <div>
-          <h2> {student.campus.name} </h2>
-          <img src={student.campus.image} />
-        </div>
+        <h2>Email: {student.email}</h2>
+        {
+          student.campus ?
+          <Link to={`/campuses/${student.campus.id}`}>
+            <div>
+              <h2> College: {student.campus.name}</h2>
+              <img src={student.campus.image} />
+            </div>
+          </Link> :
+          <h3>No college selected</h3>
+        }
       </div>
     );
   }

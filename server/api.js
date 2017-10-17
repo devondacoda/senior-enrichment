@@ -1,6 +1,5 @@
 'use strict';
 const api = require('express').Router();
-const db = require('../db');
 const Students = require('../db/models').Students;
 const Campuses = require('../db/models').Campuses;
 
@@ -13,6 +12,14 @@ api.get('/campuses', (req, res, next) => {
 	Campuses.findAll()
 	.then(campuses => {
 		res.json(campuses);
+	})
+	.catch(next);
+});
+
+api.post('/campuses', (req, res, next) => {
+	Campuses.create(req.body)
+	.then((campus) => {
+		res.json(campus);
 	})
 	.catch(next);
 });
@@ -36,6 +43,14 @@ api.get('/students', (req, res, next) => {
 	Students.findAll()
 	.then(students => {
 		res.json(students);
+	})
+	.catch(next);
+});
+
+api.post('/students', (req, res, next) => {
+	Students.create(req.body)
+	.then((student) => {
+		res.json(student);
 	})
 	.catch(next);
 });
