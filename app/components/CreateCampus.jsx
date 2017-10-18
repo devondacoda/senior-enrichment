@@ -13,7 +13,9 @@ export default class CreateCampus extends Component {
         <input
         name="name"
         className="input"
-        type="text" placeholder="Enter Campus Name"
+        type="text"
+        placeholder="Enter Campus Name"
+        autoFocus={true}
         required />
         <input
         name="image"
@@ -30,7 +32,7 @@ export default class CreateCampus extends Component {
     const name = evt.target.name.value;
     const image = evt.target.image.value;
     const reqBody = image ? {name, image} : {name};
-    
+
     axios.post('/api/campuses', reqBody)
     .then(res => res.data)
     .then(campus => {

@@ -30,6 +30,7 @@ api.route('/:campusId')
     .then((arrOfResults) => res.json(arrOfResults))
     .catch(next);
   })
+
   .delete((req, res, next) => {
     Campuses.destroy({
       where: {
@@ -39,30 +40,26 @@ api.route('/:campusId')
     .then(() => res.sendStatus(200))
     .catch(next);
   })
+
   .put((req, res, next) => {
     const {name, image, campusId, students} = req.body;
-    const selectedCampus = Campuses.findById(Number(req.params.campusId))
+    Campuses.findById(Number(campusId))
     .then(campus => {
       return campus.update({
         name: name || campus.name,
         image: image || campus.image
       });
-    });
-    const studentsArr = students.map(student => {
-      return Students.findOne({
-        where: {
-          name: student
-        }
-      });
-    });
-
-    Promise.all([selectedCampus, studentsArr])
-    .then((promisesArr) => {
-      return promisesArr[1].map(student => {
-        return student.update({campusId});
+    })
+    .then(() => {
+      return students.map(student => {
+        Students.update({campusId}, {
+          where: {
+            name: student
+          }
+        });
       });
     })
-    .then(() => res.json('done'))
+    .then(() => res.sendStatus(200))
     .catch(next);
   });
 

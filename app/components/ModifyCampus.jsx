@@ -45,14 +45,14 @@ export default class ModifyCampus extends Component {
             <select name="students" onChange={this.handleSelect}>
               <option />
               {
-                this.state.studentNames.map(student => <option key={student}>{student}</option>)
+                this.state.studentNames.map((student, idx) => <option key={`${student}${idx}`}>{student}</option>)
               }
             </select>
 
             <button id="add-student-btn" onClick={this.handleAdd}>ADD</button>
             <div id="selected-students">
               <header>Selected Students:</header>
-              <ul>{this.state.selectedStudents.map(student => <li key={student}> {student} </li>) }</ul>
+              <ul>{this.state.selectedStudents.map((student, idx) => <li key={`${student}${idx}`}> {student} </li>) }</ul>
             </div>
           </div>
 

@@ -12,8 +12,7 @@ body {
 .navbar {
   display: flex;
   flex-direction: row;
-  background: #311515;
-  color: #ffffff;
+  background: #152f31;
   position: fixed;
   width: 100%;
   justify-content: center;
@@ -42,19 +41,26 @@ body {
 }
 
 img {
-  width: 30vw;
-  height: 30vh;
-  border-radius: 15%;
+  width: 25vw;
+  height: 25vh;
+  border-radius: 90%;
 }
 
 #campuses {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  text-decoration: none;
 }
 
-#campus {
+.campus {
   margin: 5px;
+  text-align: center;
+}
+
+.campus-name {
+  color: rgb(59, 17, 17);
+  text-decoration: none;
 }
 
 #edit-student-save {

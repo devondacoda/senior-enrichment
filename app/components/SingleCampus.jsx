@@ -43,6 +43,7 @@ export default class SingleCampus extends Component {
           </Link>
         </div>
         <h1>Campus: {this.state.campus.name}</h1>
+        <img src={this.state.campus.image} />
         <h2> Students </h2>
         {students.length ?
           <ol>
