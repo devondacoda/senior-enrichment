@@ -10,6 +10,7 @@ export default class ModifyStudent extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   componentDidMount() {
     axios.get('/api/campuses')
     .then(res => res.data)
@@ -37,9 +38,7 @@ export default class ModifyStudent extends Component {
           <select name="campus">
             <option />
             {
-              this.state.campuses.map(campus => {
-                return <option key={campus.id}>{campus.name}</option>;
-              })
+              this.state.campuses.map(campus => <option key={campus.id}>{campus.name}</option>)
             }
           </select>
           <br />

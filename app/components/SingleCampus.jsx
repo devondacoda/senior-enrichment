@@ -10,6 +10,8 @@ export default class SingleCampus extends Component {
       campus: {},
       students: []
     };
+
+    this.handleCampusDelete = this.handleCampusDelete.bind(this);
   }
 
   componentDidMount() {
@@ -29,19 +31,30 @@ export default class SingleCampus extends Component {
     return (
       <div>
         <div className="modifier-btns">
-          <Link className="modifier-btn" to="">Edit Campus</Link>
-          <Link className="modifier-btn" to="">Delete Campus</Link>
+          <Link className="modifier-btn" to={`/campuses/edit/${this.state.campus.id}`}>
+            <button>
+              Edit Campus
+            </button>
+          </Link>
+          <Link className="modifier-btn" to="/">
+            <button onClick={this.handleCampusDelete}>
+              Delete Campus
+            </button>
+          </Link>
         </div>
         <h1>Campus: {this.state.campus.name}</h1>
         <h2> Students </h2>
         {students.length ?
           <ol>
-            {students.map(student => {
+            {students.map((student, idx) => {
               return (
-                <div key={student.id}>
+                <div id="campus-stdnts" key={student.id}>
                   <Link to={`/students/${student.id}`}>
-                    <li>{student.name}</li>
+                    <li key={idx}>{student.name}</li>
                   </Link>
+                  <button
+                  id="stdnt-delete"
+                  onClick={this.handleStudentDelete.bind(this, idx, student.id)}> X </button>
                 </div>
               );
             })}
@@ -50,5 +63,21 @@ export default class SingleCampus extends Component {
           }
       </div>
     );
+  }
+
+  handleCampusDelete() {
+    const campusId = this.props.match.params.campusId;
+    axios.delete(`/api/campuses/${campusId}`);
+  }
+
+  handleStudentDelete(idx, studentId) {
+    axios.put(`/api/students/removeCampus/${studentId}`, {name: '', email: '', campus: ''})
+    .then(() => {
+      this.setState({
+        students: this.state.students.filter((student, i) => {
+          return i !== idx;
+        })
+      });
+    });
   }
 }

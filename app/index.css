@@ -44,6 +44,7 @@ body {
 img {
   width: 30vw;
   height: 30vh;
+  border-radius: 15%;
 }
 
 #campuses {
@@ -58,4 +59,22 @@ img {
 
 #edit-student-save {
   margin-top: 5vh;
+}
+
+#student-select {
+  display: flex;
+}
+
+#add-student-btn {
+  height: 10px;
+}
+
+#campus-stdnts {
+  display: flex;
+}
+
+#stdnt-delete {
+  background-color: red;
+  border-radius: 50%;
+  margin-left: 15px;
 }
