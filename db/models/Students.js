@@ -8,6 +8,9 @@ const Students = db.define('students', {
 	},
 	email: {
 		type: Sequelize.STRING
+	},
+	image: {
+		type: Sequelize.STRING
 	}
 });
 

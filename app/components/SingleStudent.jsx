@@ -10,6 +10,7 @@ export default class SingleStudent extends Component {
       student: {
         name: '',
         email: '',
+        image: '',
         campus: {}
       }
     };
@@ -22,8 +23,8 @@ export default class SingleStudent extends Component {
     axios.get(`api/students/${studentId}`)
     .then(res => res.data)
     .then(studentNestedObj => {
-      const {id, name, email, campus} = studentNestedObj;
-      this.setState({student: {id, name, email, campus}});
+      const {id, name, email, image, campus} = studentNestedObj;
+      this.setState({student: {id, name, email, image, campus}});
     });
   }
 
@@ -43,6 +44,7 @@ export default class SingleStudent extends Component {
           </Link>
         </div>
         <h2>{student.name.toUpperCase()}</h2>
+        <img src={this.state.student.image} />
         <h2>Email: {student.email}</h2>
         {
           student.campus ?

@@ -43,7 +43,7 @@ body {
 img {
   width: 25vw;
   height: 25vh;
-  border-radius: 90%;
+  border-radius: 50%;
 }
 
 #campuses {
@@ -56,6 +56,8 @@ img {
 .campus {
   margin: 5px;
   text-align: center;
+  width: 33%;
+  height: 12%;
 }
 
 .campus-name {

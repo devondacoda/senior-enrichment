@@ -29,7 +29,7 @@ export default class ModifyStudent extends Component {
             <hr />
             <label>Email</label>
             <br />
-            <input name="email" type="text" placeholder="Student Email" />
+            <input name="email" type="email" placeholder="Student Email" />
           </div>
 
           <hr />
