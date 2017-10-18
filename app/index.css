@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #content {
@@ -23,15 +24,21 @@ body {
 }
 
 .navbar-item {
-  padding-left: 10px;
+  margin-left: 10px;
   color: #ffffff;
   text-decoration: none;
 }
 
 .navbar-item:hover {
-  padding-left: 10px;
   color: #3d7267;
-  text-decoration: none;
+}
+
+.modifier-btns {
+  display: flex;
+}
+
+.modifier-btn {
+  margin-right: 20px;
 }
 
 img {
@@ -47,4 +54,8 @@ img {
 
 #campus {
   margin: 5px;
+}
+
+#edit-student-save {
+  margin-top: 5vh;
 }

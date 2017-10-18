@@ -27,8 +27,8 @@ export default class Campuses extends Component {
               <div id="campus" key={campus.id}>
                 <Link to={`/campuses/${campus.id}`}>
                   <h2> {campus.name} </h2>
+                  <img src={campus.image} />
                 </Link>
-                <img src={campus.image} />
               </div>
             );
           })

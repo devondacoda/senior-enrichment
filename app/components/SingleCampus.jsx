@@ -28,6 +28,10 @@ export default class SingleCampus extends Component {
     const students = this.state.students;
     return (
       <div>
+        <div className="modifier-btns">
+          <Link className="modifier-btn" to="">Edit Campus</Link>
+          <Link className="modifier-btn" to="">Delete Campus</Link>
+        </div>
         <h1>Campus: {this.state.campus.name}</h1>
         <h2> Students </h2>
         {students.length ?
@@ -42,7 +46,7 @@ export default class SingleCampus extends Component {
               );
             })}
           </ol> :
-            <h3> New school, no students. </h3>
+            <h3> No students. </h3>
           }
       </div>
     );

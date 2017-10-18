@@ -14,6 +14,7 @@ import Students from './components/Students';
 import SingleStudent from './components/SingleStudent';
 import CreateCampus from './components/CreateCampus';
 import CreateStudent from './components/CreateStudent';
+import ModifyStudent from './components/ModifyStudent';
 
 render(
   <Router>
@@ -22,10 +23,11 @@ render(
       <div id="content">
         <Route exact path="/" component={Campuses} />
         <Route exact path="/students" component={Students} />
-        <Route path="/students/:studentId" component={SingleStudent} />
-        <Route path="/campuses/:campusId" component={SingleCampus} />
+        <Route exact path="/students/:studentId" component={SingleStudent} />
+        <Route exact path="/campuses/:campusId" component={SingleCampus} />
         <Route path="/create/campus" component={CreateCampus} />
         <Route path="/create/student" component={CreateStudent} />
+        <Route path="/students/edit/:studentId" component={ModifyStudent} />
       </div>
     </div>
   </Router>,

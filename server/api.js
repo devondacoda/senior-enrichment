@@ -39,6 +39,10 @@ api.get('/campuses/:campusId', (req, res, next) => {
 	.catch(next);
 });
 
+// ────────────────────────────────────────────────────────────────────────────────
+// MODULARIZE CAMPUS AND STUDENT 
+// ────────────────────────────────────────────────────────────────────────────────
+
 api.get('/students', (req, res, next) => {
 	Students.findAll()
 	.then(students => {
@@ -61,6 +65,42 @@ api.get('/students/:studentId', (req, res, next) => {
 	})
 	.then(student => res.json(student))
 	.catch(next);
+});
+
+api.delete('/students/:studentId', (req, res, next) => {
+	Students.destroy({
+		where: {
+			id: Number(req.params.studentId)
+		}
+	})
+	.then(() => res.sendStatus(200))
+	.catch(next);
+});
+
+api.put('/students/:studentId', (req, res, next) => {
+	const {campus} = req.body;
+	let campusId = null;
+	Campuses.findOne({
+		where: {
+			name: campus
+		}
+	})
+	.then(foundCampus => {
+		return foundCampus ? foundCampus.id : 0; // if campus input from form left empty, this will return a falsy value e.g. 0;
+	})
+	.then(_campusId => {
+		campusId = _campusId;
+		return Students.findById(Number(req.params.studentId));
+	})
+	.then(student => {
+		student.update({
+			name: req.body.name || student.name,
+			email: req.body.email || student.email,
+			campusId: campusId || student.campusId
+		});
+	})
+	.then(() => res.sendStatus(200))
+	.catch((next) => console.log('am I here?'));
 });
 
 module.exports = api;

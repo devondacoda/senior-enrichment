@@ -11,16 +11,16 @@ export default class CreateCampus extends Component {
     return (
       <form id="new-student-form" onSubmit={this.handleSubmit}>
         <input
-        name="name"
-        className="input"
-        type="text" placeholder="Enter Student Name"
-        required />
+          name="name"
+          className="input"
+          type="text" placeholder="Enter Student Name"
+          required />
         <input
-        name="email"
-        className="input"
-        type="email"
-        placeholder="Enter Email"
-        required />
+          name="email"
+          className="input"
+          type="email"
+          placeholder="Enter Email"
+          required />
         <button className="btn">SAVE</button>
       </form>
     );

@@ -13,6 +13,8 @@ export default class SingleStudent extends Component {
         campus: {}
       }
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -20,19 +22,26 @@ export default class SingleStudent extends Component {
     axios.get(`api/students/${studentId}`)
     .then(res => res.data)
     .then(studentNestedObj => {
-      const name = studentNestedObj.name;
-      const email = studentNestedObj.email;
-      const campus = studentNestedObj.campus;
-
-      this.setState({student: {name, email, campus}});
+      const {id, name, email, campus} = studentNestedObj;
+      this.setState({student: {id, name, email, campus}});
     });
   }
 
   render() {
     const student = this.state.student;
-    console.log(student);
+
     return (
       <div>
+         <div className="modifier-btns">
+          <Link to={`/students/edit/${student.id}`}>
+            <button className="modifier-btn">Edit Student</button>
+          </Link>
+          <Link to="/students">
+            <button
+            className="modifier-btn"
+            onClick={this.handleDelete}>Delete Student</button>
+          </Link>
+        </div>
         <h2>{student.name.toUpperCase()}</h2>
         <h2>Email: {student.email}</h2>
         {
@@ -47,5 +56,10 @@ export default class SingleStudent extends Component {
         }
       </div>
     );
+  }
+
+  handleDelete() {
+    const studentId = this.props.match.params.studentId;
+    axios.delete(`/api/students/${studentId}`);
   }
 }
