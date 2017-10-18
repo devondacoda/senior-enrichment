@@ -41,13 +41,13 @@ api.route('/:campusId')
   })
   .put((req, res, next) => {
     const {name, image, campusId, students} = req.body;
-    // Campuses.findById(Number(req.params.campusId))
-    // .then(campus => {
-    //   return campus.update({
-    //     name: name || campus.name,
-    //     image: image || campus.image
-    //   });
-    // });
+    const selectedCampus = Campuses.findById(Number(req.params.campusId))
+    .then(campus => {
+      return campus.update({
+        name: name || campus.name,
+        image: image || campus.image
+      });
+    });
     const studentsArr = students.map(student => {
       return Students.findOne({
         where: {
@@ -56,13 +56,13 @@ api.route('/:campusId')
       });
     });
 
-    Promise.all(studentsArr)
-    .then((stdntArr) => {
-      return stdntArr.map(student => {
+    Promise.all([selectedCampus, studentsArr])
+    .then((promisesArr) => {
+      return promisesArr[1].map(student => {
         return student.update({campusId});
       });
     })
-    .then(() => res.sendStatus(200))
+    .then(() => res.json('done'))
     .catch(next);
   });
 

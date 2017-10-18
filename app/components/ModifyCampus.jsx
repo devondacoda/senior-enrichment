@@ -79,13 +79,12 @@ export default class ModifyCampus extends Component {
     evt.preventDefault();
     const campusId = this.props.match.params.campusId;
     const {name, image} = evt.target;
-    const reqBody = {name, image, campusId, students: this.state.selectedStudents};
+    const reqBody = {name: name.value, image: image.value, campusId, students: this.state.selectedStudents};
 
     axios.put(`/api/campuses/${campusId}`, reqBody)
     .then(res => res.data)
-    .then((dst) => {
-      console.log(dst);
-      // this.props.history.push(`/campuses/${campusId}`);
+    .then(() => {
+      this.props.history.push(`/campuses/${campusId}`);
     });
   }
 }
