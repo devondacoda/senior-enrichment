@@ -1,5 +1,6 @@
 # Senior Enrichment Project
 There's a seed file. npm run seed
+
 Make a thing!
 
 ## Getting started
